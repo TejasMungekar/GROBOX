@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banner Loop Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fb;
+      padding: 20px;
+    }
+    .banner-container {
+      display: flex;
+      gap: 0px;
+      justify-content: space-between;
+      
+    }
+    .banner-box1{
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      height: 320px;
+      margin: 0;
+  
+    }
+    .banner-box2{
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      border-top-right-radius: 16px;
+      border-bottom-right-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      height: 320px;
+      margin: 0;
+  
+    }
+    .banner-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+    .banner-slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    .banner-content {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #1a1a1a;
+      z-index: 2;
+    }
+    .banner-tag {
+      background: #ffe0cc;
+      color: #d35400;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .banner-title {
+      color: #000000;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .banner-subtitle {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+    .shop-btn {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 24px;
+      padding: 10px 18px;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Category Products</div>
+  <div class="banner-container">
+    <div class="banner-box1" id="banner1">
+      <div class="banner-slide active">
+        <img src="images/banner_1.jpg" width="100%" height="100%" style="object-fit: cover;">
+        <div class="banner-content">
+          <div class="banner-tag">Only This Week</div>
+          <div class="banner-title">Make your grocery shopping easy with us</div>
+          <div class="banner-subtitle">Feed your family the best</div>
+          <div class="shop-btn">Shop Now →</div>
+        </div>
+      </div>
+      <div class="banner-slide">
+        <img src="images/banner_2.png " width="100%" height="100%" style="object-fit: cover;">
+        <div class="banner-content">
+          <div class="banner-tag">Only This Week</div>
+          <div class="banner-title">Fresh picks at great prices</div>
+          <div class="banner-subtitle">Your weekly essentials sorted</div>
+          <div class="shop-btn">Shop Now →</div>
+        </div>
+      </div>
+    </div>
+    <div class="banner-box2" id="banner2">
+      <div class="banner-slide active">
+        <img src="images/banner_4.jpg" width="100%" height="100%" style="object-fit: cover;">
+        <div class="banner-content">
+          <div class="banner-tag">Only This Week</div>
+          <div class="banner-title">Get your everyday needs here with us</div>
+          <div class="banner-subtitle">A different kind of grocery store</div>
+          <div class="shop-btn">Shop Now →</div>
+        </div>
+      </div>
+      <div class="banner-slide">
+        <img src="images/banner4.webp " width="100%" height="100%" style="object-fit: cover;">
+        <div class="banner-content">
+          <div class="banner-tag">Only This Week</div>
+          <div class="banner-title">Tasty treats & sweets picks</div>
+          <div class="banner-subtitle">Discover and save big</div>
+          <div class="shop-btn">Shop Now →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function rotateSlides(bannerId) {
+      const slides = document.querySelectorAll(`#${bannerId} .banner-slide`);
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 4000);
+    }
+
+    rotateSlides('banner1');
+    rotateSlides('banner2');
+  </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding News Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .news-container {
+            width: 80%;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .news-slider {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease-in-out;
+        }
+        .news-card {
+            min-width: 300px;
+            background-color: #ff6600;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .news-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .news-card h3 {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        .news-card p {
+            font-size: 14px;
+        }
+        .news-card .news-info {
+            font-size: 12px;
+            color: #ddd;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="news-container">
+        <div class="news-slider">
+            <div class="news-card">
+                <img src="news1.jpg" alt="News 1">
+                <h3>Breaking News 1</h3>
+                <p>Summary of the news article goes here...</p>
+                <div class="news-info">by Sinan • 3 Nov 2023</div>
+            </div>
+            <div class="news-card">
+                <img src="news2.jpg" alt="News 2">
+                <h3>Breaking News 2</h3>
+                <p>Summary of the news article goes here...</p>
+                <div class="news-info">by Sinan • 5 Nov 2023</div>
+            </div>
+            <div class="news-card">
+                <img src="news3.jpg" alt="News 3">
+                <h3>Breaking News 3</h3>
+                <p>Summary of the news article goes here...</p>
+                <div class="news-info">by Sinan • 7 Nov 2023</div>
+            </div>
+            <div class="news-card">
+                <img src="news4.jpg" alt="News 4">
+                <h3>Breaking News 4</h3>
+                <p>Summary of the news article goes here...</p>
+                <div class="news-info">by Sinan • 10 Nov 2023</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let slider = document.querySelector('.news-slider');
+        let scrollAmount = 0;
+        let cardWidth = document.querySelector('.news-card').offsetWidth + 20;
+
+        function slideNews() {
+            scrollAmount += cardWidth;
+            if (scrollAmount >= slider.scrollWidth - cardWidth) {
+                scrollAmount = 0; // Reset position to the start
+            }
+            slider.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+
+        setInterval(slideNews, 2000); // Auto-slide every 2 seconds
+    </script>
+
+</body>
+</html>
